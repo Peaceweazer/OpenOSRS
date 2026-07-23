@@ -1,7 +1,0 @@
-node_modules/
-.env
-output/
-workflow_state.json
-*.mp3
-*.mp4
-service-account.json
