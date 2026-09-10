@@ -1,0 +1,75 @@
+extends RefCounted
+## CHRONOS shared constants.
+##
+## Every value here is discrete. No floats participate in causal simulation.
+
+## Tick phases, in mandatory execution order.
+const PHASE_TEMPORAL_ARRIVAL := "TEMPORAL_ARRIVAL"
+const PHASE_ENVIRONMENT := "ENVIRONMENT"
+const PHASE_ACTOR := "ACTOR"
+const PHASE_TEMPORAL_DEPARTURE := "TEMPORAL_DEPARTURE"
+const PHASE_CLEANUP := "CLEANUP"
+
+const PHASES := [
+	PHASE_TEMPORAL_ARRIVAL,
+	PHASE_ENVIRONMENT,
+	PHASE_ACTOR,
+	PHASE_TEMPORAL_DEPARTURE,
+	PHASE_CLEANUP,
+]
+
+## Phases in which data-driven case events may be declared.
+const EVENT_PHASES := [PHASE_ENVIRONMENT, PHASE_ACTOR]
+
+const MAX_RECONCILIATION_ITERATIONS := 64
+
+## Intervention kinds.
+const TRANSFER_PHYSICAL := "PHYSICAL_TRANSFER"
+const TRANSFER_INFORMATION := "INFORMATION_TRANSFER"
+
+## Intervention resolution statuses. Only SOURCE_RESOLVED is a valid resolution.
+const SOURCE_RESOLVED := "SOURCE_RESOLVED"
+const SOURCE_UNAVAILABLE := "SOURCE_UNAVAILABLE"
+const SOURCE_AMBIGUOUS := "SOURCE_AMBIGUOUS"
+const SOURCE_CONTESTED := "SOURCE_CONTESTED"
+const RECEIVER_UNAVAILABLE := "RECEIVER_UNAVAILABLE"
+const RECEIVER_AMBIGUOUS := "RECEIVER_AMBIGUOUS"
+const STRUCTURALLY_INVALID := "STRUCTURALLY_INVALID"
+
+## Final result classifications.
+const STABLE_SOLVED := "STABLE_SOLVED"
+const STABLE_UNSOLVED := "STABLE_UNSOLVED"
+const INVALID_INTERVENTION := "INVALID_INTERVENTION"
+const UNSTABLE := "UNSTABLE"
+
+## Instability reasons.
+const OSCILLATING_CAUSALITY := "OSCILLATING_CAUSALITY"
+const WRITE_CONFLICT := "WRITE_CONFLICT"
+const INVARIANT_VIOLATION := "INVARIANT_VIOLATION"
+const NO_CONVERGENCE := "NO_CONVERGENCE"
+
+## Event outcomes.
+const EXECUTED := "EXECUTED"
+const BLOCKED := "BLOCKED"
+
+## Provenance origin kinds.
+const ORIGIN_INITIAL := "INITIAL"
+const ORIGIN_EVENT := "EVENT"
+const ORIGIN_TEMPORAL_ARRIVAL := "TEMPORAL_ARRIVAL"
+
+## Causal loop kinds.
+const LOOP_OBJECT_BOOTSTRAP := "OBJECT_BOOTSTRAP_LOOP"
+const LOOP_INFORMATION_BOOTSTRAP := "INFORMATION_BOOTSTRAP_LOOP"
+
+## Chronal load weights (diagnostic only; never gates a solution).
+const CHRONAL_TYPE_WEIGHTS := {
+	"PERSON": 12,
+	"SMALL_OBJECT": 4,
+	"INFORMATION": 1,
+}
+const CHRONAL_DEFAULT_TYPE_WEIGHT := 4
+const CHRONAL_TRANSFER_OVERHEAD := 2
+const CHRONAL_PERSON_OVERLAP_PER_TICK := 1
+
+static func phase_index(phase: String) -> int:
+	return PHASES.find(phase)

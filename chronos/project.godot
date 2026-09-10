@@ -1,0 +1,16 @@
+; CHRONOS PROOF v0.1 — headless simulation project for PARADOX BUREAU.
+; No main scene, no rendering, no autoloads: the engine is pure GDScript.
+
+config_version=5
+
+[application]
+
+config/name="CHRONOS Proof v0.1"
+config/description="Headless deterministic causal simulation proof. No gameplay, no UI."
+config/features=PackedStringArray("4.3", "Forward Plus")
+run/main_scene=""
+
+[debug]
+
+gdscript/warnings/enable=true
+gdscript/warnings/untyped_declaration=0
